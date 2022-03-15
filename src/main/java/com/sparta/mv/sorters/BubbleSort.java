@@ -1,6 +1,6 @@
-package com.sparta.mv;
+package com.sparta.mv.sorters;
 
-public class BubbleSort implements Sorter{
+public class BubbleSort implements Sorter {
     @Override
     public int[] sort(int[] numbers) {
         boolean swapped = false;
