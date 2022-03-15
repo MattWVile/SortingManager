@@ -16,6 +16,11 @@ public class BubbleSort implements Sorter{
         return numbers;
     }
 
+    @Override
+    public String toString() {
+        return "BubbleSort";
+    }
+
     private static void swap(int[] numbers, int count) {
         int placeHolder = numbers[count - 1];
         numbers[count - 1] = numbers[count];
