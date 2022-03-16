@@ -1,5 +1,7 @@
 package com.sparta.mv;
 
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,9 +15,12 @@ public class App
         System.out.print("Please state an array size: ");
         int arraySize = input.nextInt();
         int[] arrayToSort = arrayGenerator(arraySize);
-        System.out.println("Sorting this array: " + arrayToSort.toString() + " Using the " + SortFactory.getSorter(choice)+ " method");
+        System.out.println("Sorting this array: " + Arrays.toString(arrayToSort) + " Using the " + SortFactory.getSorter(choice).toString() + " method");
+        long before = System.nanoTime();
         int[] sortedArray = SortFactory.getSorter(choice).sort(arrayToSort);
-        System.out.println("Sorted array : " + sortedArray.toString() + "This took: "  );
+        long after = System.nanoTime();
+        long timeTaken = after - before;
+        System.out.println("Sorted array : " + Arrays.toString(sortedArray) + " This took: " + timeTaken + " Nano seconds." );
 
 
 
