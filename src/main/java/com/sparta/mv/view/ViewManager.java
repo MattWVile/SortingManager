@@ -1,6 +1,6 @@
 package com.sparta.mv.view;
 
-import com.sparta.mv.SortFactory;
+import com.sparta.mv.sorters.SortFactory;
 import com.sparta.mv.sorters.BinaryTreeSort;
 import com.sparta.mv.sorters.Sorter;
 
