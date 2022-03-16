@@ -1,10 +1,12 @@
 package com.sparta.mv.sorters;
 
+import java.util.Arrays;
+
 public class BinaryTreeSort implements Sorter{
     private final Node rootNode;
     private int counter = 0;
 
-    private BinaryTreeSort(final int element) {
+    public BinaryTreeSort(final int element) {
         rootNode = new Node(element);
     }
     private void addElements (final int[] elements){
@@ -61,23 +63,54 @@ public class BinaryTreeSort implements Sorter{
         return this.rootNode;
     }
 
+    private static boolean check(int[] arr, int toCheckValue) {
+        Arrays.sort(arr);
+        int res = Arrays.binarySearch(arr, toCheckValue);
+        boolean test = res > 0 ? true : false;
+        return test;
+    }
+
+    @Override
     public int[] sort(int[] numbers) {
         Node node = getRootElement();
-        int[] arrayToSort = new int[counter];
+        addElements(numbers);
+        int[] arrayToSort = new int[numbers.length];
         Node parent = node;
         int i = 0;
-        while (i < counter - 1){
-            if(!node.isLeftChildEmpty() && arrayToSort[i -1] != node.getValue()){
+        while (i == 0 ) {
+            if (!node.isLeftChildEmpty()) {
                 parent = node;
                 node = node.getLeftChild();
-            } else if (node.isLeftChildEmpty() && arrayToSort[i -1] != node.getValue()){
+            } else if (node.isLeftChildEmpty()) {
                 arrayToSort[i] = node.getValue();
-                i ++;
-                node = parent;
-            } else if (!node.isRightChildEmpty() && arrayToSort[i -1] != node.getValue()){
+                i++;
+                if(!node.isRightChildEmpty()){
+                    parent = node;
+                    node = node.getRightChild();
+                }else{
+                    node = parent;
+                }
+            }
+        }
+        while (i < counter - 1){
+            if(!node.isLeftChildEmpty() && check(arrayToSort, node.getLeftChild().getValue())){
+                parent = node;
+                node = node.getLeftChild();
+            } else if (node.isLeftChildEmpty()){
+                if(!check(arrayToSort, node.getValue())){
+                    arrayToSort[i] = node.getValue();
+                    i ++;
+                    node = parent;
+                }else if(node.isRightChildEmpty()){
+                    node = parent;
+                } else if (!node.isRightChildEmpty()){
+                    parent = node;
+                    node = node.getRightChild();
+                }
+            } else if (!node.isRightChildEmpty()){
                 parent = node;
                 node = node.getRightChild();
-            } else if (node.isRightChildEmpty()&& arrayToSort[i -1] != node.getValue()){
+            } else if (node.isRightChildEmpty()&& !check(arrayToSort, node.getValue())){
                 arrayToSort[i] = node.getValue();
                 i ++;
                 node = parent;
@@ -87,5 +120,10 @@ public class BinaryTreeSort implements Sorter{
         }
 
         return arrayToSort;
+    }
+
+    @Override
+    public String toString() {
+        return "Binary tree sort";
     }
 }
