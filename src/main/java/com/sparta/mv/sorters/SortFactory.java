@@ -1,4 +1,4 @@
-package com.sparta.mv;
+package com.sparta.mv.sorters;
 
 import com.sparta.mv.sorters.BinaryTreeSort;
 import com.sparta.mv.sorters.BubbleSort;
