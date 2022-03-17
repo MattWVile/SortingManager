@@ -1,7 +1,7 @@
 package com.sparta.mv.view;
 
 import com.sparta.mv.sorters.SortFactory;
-import com.sparta.mv.sorters.binarytree.BinaryTreeSort;
+import com.sparta.mv.sorters.BinaryTreeSort;
 import com.sparta.mv.sorters.Sorter;
 
 import java.util.Arrays;
@@ -13,14 +13,12 @@ public class ViewManager {
     private static Scanner input = new Scanner(System.in);
 
     public static void view(){
-        int num = 1;
-        displaySorters(num);
+        displaySorters();
         Sorter sorter = sorterPicker();
         int length = arrayLength();
         int arrayToSort[] = new int[length];
         if (sorter instanceof BinaryTreeSort){
-            int rootNode = rootNode();
-            arrayToSort = arrayGeneratorWithRoot(length, rootNode );
+            arrayToSort = arrayGeneratorWithRoot(length);
         }else{
             arrayToSort = arrayGenerator(length);
         }
@@ -32,9 +30,10 @@ public class ViewManager {
         System.out.println("Sorted array : " + Arrays.toString(sortedArray) + " This took: " + timeTaken + " Nano seconds.");
     }
 
-    private static void displaySorters(int num) {
+    private static void displaySorters() {
+        int num = 1;
         while(num <= 2){
-            System.out.println(num + ": " + SortFactory.getSorter(num, 0).toString());
+            System.out.println(num + ": " + SortFactory.getSorter(num).toString());
             num++;
         }
     }
@@ -42,7 +41,7 @@ public class ViewManager {
     private static Sorter sorterPicker(){
         System.out.print("Please choose a method to sort using: ");
         int choice = input.nextInt();
-        return SortFactory.getSorter(choice, 0);
+        return SortFactory.getSorter(choice);
 
 
     }
@@ -56,9 +55,9 @@ public class ViewManager {
         return arrayToSort;
     }
 
-    private static int[] arrayGeneratorWithRoot(int arraySize, int rootNode) {
+    private static int[] arrayGeneratorWithRoot(int arraySize) {
         int[] arrayToSort = new int[arraySize];
-        arrayToSort[0] = rootNode;
+        arrayToSort[0] = rootNode();
         for (int i = 1; i < arraySize; i ++){
             int rand = new Random().nextInt(1000 + 1000) - 1000;
             arrayToSort[i] = rand;
