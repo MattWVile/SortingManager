@@ -1,8 +1,6 @@
 package com.sparta.mv.sorters;
 
-import com.sparta.mv.sorters.BinaryTreeSort;
-import com.sparta.mv.sorters.BubbleSort;
-import com.sparta.mv.sorters.Sorter;
+import com.sparta.mv.sorters.binarytree.BinaryTreeSort;
 
 public class SortFactory {
     public static Sorter getSorter(int choice, int rootNode) {
