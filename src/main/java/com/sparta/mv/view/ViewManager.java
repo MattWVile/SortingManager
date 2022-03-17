@@ -1,7 +1,7 @@
 package com.sparta.mv.view;
 
 import com.sparta.mv.sorters.SortFactory;
-import com.sparta.mv.sorters.BinaryTreeSort;
+import com.sparta.mv.sorters.binarytree.BinaryTreeSort;
 import com.sparta.mv.sorters.Sorter;
 
 import java.util.Arrays;
