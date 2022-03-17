@@ -18,7 +18,7 @@ public class SorterTest {
         int[] in = {7, 2, 3, 5, 74, 6, 8, 9, 4, 1};
         int[] out = {1, 2, 3, 4, 5, 6, 7, 8, 9, 74};
         while (num <= 2){
-            Sorter sorter = SortFactory.getSorter(num, 1);
+            Sorter sorter = SortFactory.getSorter(num);
             num ++;
             Assertions.assertArrayEquals(out, sorter.sort(in));
         }
@@ -31,7 +31,7 @@ public class SorterTest {
         int num = 1;
         int[] times = new int[2];
         while (num <= 2) {
-            Sorter sorter = SortFactory.getSorter(num, 1);
+            Sorter sorter = SortFactory.getSorter(num);
             long timeStart = System.nanoTime();
             sorter.sort(in);
             long timeStop = System.nanoTime();

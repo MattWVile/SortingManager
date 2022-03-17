@@ -18,7 +18,7 @@ public class BubbleSort implements Sorter {
 
     @Override
     public String toString() {
-        return "BubbleSort";
+        return "Bubble sort";
     }
 
     private static void swap(int[] numbers, int count) {
