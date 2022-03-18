@@ -40,6 +40,10 @@ public class ViewManager {
 
     private static Sorter sorterPicker(){
         System.out.print("Please choose a method to sort using: ");
+        while(!input.hasNextInt()) {
+            System.out.print("Please (using the number corresponding with the method) choose a method to sort using: ");
+            input.next();
+        }
         int choice = input.nextInt();
         return SortFactory.getSorter(choice);
 
