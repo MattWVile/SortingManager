@@ -3,14 +3,15 @@ package com.sparta.mv.view;
 import com.sparta.mv.sorters.SortFactory;
 import com.sparta.mv.sorters.BinaryTreeSort;
 import com.sparta.mv.sorters.Sorter;
-
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class ViewManager {
     private static int rootNode = 0;
     private static Scanner input = new Scanner(System.in);
+    private static int sorterCount = 4;
 
     public static void view(){
         displaySorters();
@@ -32,7 +33,7 @@ public class ViewManager {
 
     private static void displaySorters() {
         int num = 1;
-        while(num <= 3){
+        while(num <= sorterCount){
             System.out.println(num + ": " + SortFactory.getSorter(num).toString());
             num++;
         }
@@ -45,7 +46,7 @@ public class ViewManager {
             input.next();
         }
         int choice = input.nextInt();
-        while(choice > 3){
+        while(choice > sorterCount){
             System.out.print("Please enter a number on you can see next to the sorting methods to choose one: ");
             choice = input.nextInt();
         }
@@ -89,5 +90,6 @@ public class ViewManager {
         int rootNode = input.nextInt();
         return rootNode;
     }
+
 
 }
