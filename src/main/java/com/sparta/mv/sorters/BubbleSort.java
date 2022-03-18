@@ -3,6 +3,10 @@ package com.sparta.mv.sorters;
 public class BubbleSort implements Sorter {
     @Override
     public int[] sort(int[] numbers) {
+        if (numbers.length>1000){
+            int[] arr = new int[1];
+            return arr;
+        }
         boolean swapped = false;
         while (!swapped) {
             swapped = true;

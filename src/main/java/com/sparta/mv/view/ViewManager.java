@@ -32,7 +32,7 @@ public class ViewManager {
 
     private static void displaySorters() {
         int num = 1;
-        while(num <= 2){
+        while(num <= 3){
             System.out.println(num + ": " + SortFactory.getSorter(num).toString());
             num++;
         }
@@ -40,6 +40,10 @@ public class ViewManager {
 
     private static Sorter sorterPicker(){
         System.out.print("Please choose a method to sort using: ");
+        while(!input.hasNextInt()) {
+            System.out.print("Please (using the number corresponding with the method) choose a method to sort using: ");
+            input.next();
+        }
         int choice = input.nextInt();
         return SortFactory.getSorter(choice);
 
@@ -68,6 +72,11 @@ public class ViewManager {
     private static int arrayLength(){
         System.out.print("Please state an array size: ");
         int length = input.nextInt();
+        while (length > 1000 || length < 0){
+            System.out.print("Please state an array size between 1-1000: ");
+            length = input.nextInt();
+        }
+
         return length;
     }
 
