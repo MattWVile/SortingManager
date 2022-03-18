@@ -1,5 +1,7 @@
 package com.sparta.mv.sorters.binarytree;
 
+import com.sparta.mv.exceptions.ChildNotFoundException;
+
 public interface BinaryTreeMethods {
     BinaryTree.Node getRootElement();
 
@@ -11,9 +13,9 @@ public interface BinaryTreeMethods {
 
     boolean findElement(int value);
 
-    int getLeftChild(int element);
+    int getLeftChild(int element) throws ChildNotFoundException;
 
-    int getRightChild(int element);
+    int getRightChild(int element) throws ChildNotFoundException;
 
     int[] getSortedTreeAsc();
 

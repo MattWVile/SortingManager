@@ -45,6 +45,10 @@ public class ViewManager {
             input.next();
         }
         int choice = input.nextInt();
+        while(choice > 3){
+            System.out.print("Please enter a number on you can see next to the sorting methods to choose one: ");
+            choice = input.nextInt();
+        }
         return SortFactory.getSorter(choice);
 
 

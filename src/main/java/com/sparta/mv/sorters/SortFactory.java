@@ -1,5 +1,6 @@
 package com.sparta.mv.sorters;
 
+import com.sparta.mv.exceptions.SorterLoaderException;
 import com.sparta.mv.sorters.binarytree.BinaryTree;
 
 public class SortFactory {
@@ -12,7 +13,7 @@ public class SortFactory {
             case 3:
                 return new QuickSort();
             default:
-                return null;
+                return new SorterLoaderException("Invalid sorter choice: " + choice);
         }
     }
 }
