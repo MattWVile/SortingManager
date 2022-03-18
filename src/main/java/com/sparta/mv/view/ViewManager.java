@@ -32,7 +32,7 @@ public class ViewManager {
 
     private static void displaySorters() {
         int num = 1;
-        while(num <= 2){
+        while(num <= 3){
             System.out.println(num + ": " + SortFactory.getSorter(num).toString());
             num++;
         }
@@ -45,6 +45,10 @@ public class ViewManager {
             input.next();
         }
         int choice = input.nextInt();
+        while(choice > 3){
+            System.out.print("Please enter a number on you can see next to the sorting methods to choose one: ");
+            choice = input.nextInt();
+        }
         return SortFactory.getSorter(choice);
 
 

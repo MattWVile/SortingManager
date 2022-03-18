@@ -11,9 +11,9 @@ public class PerformanceTest {
     void timeTakenToSort() {
         int[] in = {7, 2, 3, 5, 74, 6, 8, 9, 4, 1,56,234,456,345,940,-344,-600,-900,-20,-234};
         int num = 1;
-        int[] times = new int[2];
-        String[] sortNames = new String[2];
-        while (num <= 2) {
+        int[] times = new int[3];
+        String[] sortNames = new String[3];
+        while (num <= 3) {
             Sorter sorter = SortFactory.getSorter(num);
             sortNames[num - 1] = sorter.toString();
             long timeStart = System.nanoTime();
