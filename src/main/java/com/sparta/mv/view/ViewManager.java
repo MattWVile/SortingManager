@@ -3,10 +3,10 @@ package com.sparta.mv.view;
 import com.sparta.mv.sorters.SortFactory;
 import com.sparta.mv.sorters.BinaryTreeSort;
 import com.sparta.mv.sorters.Sorter;
-
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+
 
 public class ViewManager {
     private static int rootNode = 0;
@@ -90,5 +90,6 @@ public class ViewManager {
         int rootNode = input.nextInt();
         return rootNode;
     }
+
 
 }

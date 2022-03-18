@@ -1,5 +1,9 @@
 package com.sparta.mv.sorters.binarytree;
 
+import com.sparta.mv.exceptions.ChildNotFoundException;
+
+import java.util.logging.Level;
+
 public class BinaryTree implements BinaryTreeMethods {
 
     private final Node rootNode;
@@ -48,12 +52,18 @@ public class BinaryTree implements BinaryTreeMethods {
         }
     }
     @Override
-    public int getLeftChild(int element)  {
+    public int getLeftChild(int element) throws ChildNotFoundException{
+        if(findNode(element).isLeftChildEmpty()){
+            new ChildNotFoundException();
+        }
         int leftChild = findNode(element).getLeftChild().getValue();
         return leftChild;
     }
     @Override
     public int getRightChild(int element)  {
+        if(findNode(element).isRightChildEmpty()){
+            new ChildNotFoundException();
+        }
         int rightChild = findNode(element).getRightChild().getValue();
         return rightChild;
     }
