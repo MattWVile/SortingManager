@@ -3,11 +3,8 @@ package com.sparta.mv.sorters;
 public class QuickSort implements Sorter{
     @Override
     public int[] sort(int[] numbers) {
-        if (numbers.length>1000){
-            int[] arr = new int[1];
-            return arr;
-        }
-        return quickSort(numbers,0,numbers.length -1);
+        int[] sorted = quickSort(numbers,0,numbers.length -1);
+        return rangeCheck(sorted);
     }
 
     @Override
