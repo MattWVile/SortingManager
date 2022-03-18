@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,32 +23,59 @@ public class SorterTest {
             Sorter sorter = SortFactory.getSorter(num);
             num ++;
             Assertions.assertArrayEquals(out, sorter.sort(in));
+            System.out.println(sorter.toString() + " sorted successfully.");
         }
+        System.out.println("----------");
     }
 
     @Test
-    @DisplayName("Time taken to sort")
-    void timeTakenToSort() {
-        int[] in = {7, 2, 3, 5, 74, 6, 8, 9, 4, 1};
+    @DisplayName("Array shouldnt be more than 1000 ")
+    void arrayShouldntBeMoreThanOneThousand() {
+        int[] in = new int[1001];
+        int[] out = new int[1];
         int num = 1;
-        int[] times = new int[2];
-        String[] sortNames = new String[2];
-        while (num <= 2) {
+        while (num <= 2){
             Sorter sorter = SortFactory.getSorter(num);
-            sortNames[num - 1] = sorter.toString();
-            long timeStart = System.nanoTime();
-            sorter.sort(in);
-            long timeStop = System.nanoTime();
-            long timeTaken = timeStop - timeStart;
-            times[num - 1] = (int) timeTaken;
-            num++;
+            num ++;
+            Assertions.assertArrayEquals(out, sorter.sort(in));
+            System.out.println(sorter.toString() + " doesn't take 1000 or more");
         }
-        int i = 0 ;
-        while(i < sortNames.length){
-            System.out.println(sortNames[i] + " took: " + times[i] + " Nanoseconds to complete.");
+        System.out.println("----------");
+    }
+
+    @Test
+    @DisplayName("No elements in a large array should be lost in sorting")
+    void noElementsInALargeArrayShouldBeLostInSorting() {
+        int num = 1;
+        int[] in = new int[999];
+        int i = 0;
+        for (int element:in) {
+            int rand = new Random().nextInt(1000 + 1000) - 1000;
+            in[i] = rand;
             i++;
         }
+        int[]out = in;
+        Arrays.sort(out);
+        while (num <= 2){
+            Sorter sorter = SortFactory.getSorter(num);
+            num ++;
 
+            Assertions.assertArrayEquals(out, sorter.sort(in));
+            System.out.println(sorter.toString() + " sorted successfully with many elements.");
+        }
+        System.out.println("----------");
     }
-    
+
+    @Test
+    @DisplayName("Sort factory should return the correct sorter")
+    void sortFactoryShouldReturnTheCorrectSorter() {
+        String[] sortingNames = {"Bubble sort", "Binary tree sort"};
+        int num = 0;
+        for(String name : sortingNames){
+            Assertions.assertEquals(sortingNames[num],SortFactory.getSorter(num + 1).toString());
+            System.out.println("Inputting " + (num+1) + " returns: "+ SortFactory.getSorter(num + 1).toString());
+            num++;
+        }
+        System.out.println("----------");
+    }
 }
