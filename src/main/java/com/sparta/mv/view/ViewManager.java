@@ -32,7 +32,7 @@ public class ViewManager {
 
     private static void displaySorters() {
         int num = 1;
-        while(num <= 2){
+        while(num <= 3){
             System.out.println(num + ": " + SortFactory.getSorter(num).toString());
             num++;
         }

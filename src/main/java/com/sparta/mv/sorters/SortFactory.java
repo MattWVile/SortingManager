@@ -9,6 +9,8 @@ public class SortFactory {
                 return new BubbleSort();
             case 2:
                 return new BinaryTreeSort();
+            case 3:
+                return new QuickSort();
             default:
                 return null;
         }

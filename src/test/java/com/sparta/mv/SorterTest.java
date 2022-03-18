@@ -19,7 +19,7 @@ public class SorterTest {
         int num = 1;
         int[] in = {7, 2, 3, 5, 74, 6, 8, 9, 4, 1};
         int[] out = {1, 2, 3, 4, 5, 6, 7, 8, 9, 74};
-        while (num <= 2){
+        while (num <= 3){
             Sorter sorter = SortFactory.getSorter(num);
             num ++;
             Assertions.assertArrayEquals(out, sorter.sort(in));
@@ -34,7 +34,7 @@ public class SorterTest {
         int[] in = new int[1001];
         int[] out = new int[1];
         int num = 1;
-        while (num <= 2){
+        while (num <= 3){
             Sorter sorter = SortFactory.getSorter(num);
             num ++;
             Assertions.assertArrayEquals(out, sorter.sort(in));
@@ -56,7 +56,7 @@ public class SorterTest {
         }
         int[]out = in;
         Arrays.sort(out);
-        while (num <= 2){
+        while (num <= 3){
             Sorter sorter = SortFactory.getSorter(num);
             num ++;
 
@@ -69,7 +69,7 @@ public class SorterTest {
     @Test
     @DisplayName("Sort factory should return the correct sorter")
     void sortFactoryShouldReturnTheCorrectSorter() {
-        String[] sortingNames = {"Bubble sort", "Binary tree sort"};
+        String[] sortingNames = {"Bubble sort", "Binary tree sort", "Quick sort"};
         int num = 0;
         for(String name : sortingNames){
             Assertions.assertEquals(sortingNames[num],SortFactory.getSorter(num + 1).toString());
