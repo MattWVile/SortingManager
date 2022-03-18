@@ -72,6 +72,11 @@ public class ViewManager {
     private static int arrayLength(){
         System.out.print("Please state an array size: ");
         int length = input.nextInt();
+        while (length > 1000 || length < 0){
+            System.out.print("Please state an array size between 1-1000: ");
+            length = input.nextInt();
+        }
+
         return length;
     }
 
