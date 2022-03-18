@@ -13,7 +13,7 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SorterTest {
-    final static int sorterCount = 3;
+    private static int sorterCount = 4;
     @Test
     @DisplayName("All Sorter methods should sort with an odd amount in array")
     void allSorterMethodsShouldSortWithOddAmountInArray() {

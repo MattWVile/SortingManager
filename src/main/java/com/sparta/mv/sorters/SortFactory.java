@@ -12,6 +12,8 @@ public class SortFactory {
                 return new BinaryTreeSort();
             case 3:
                 return new QuickSort();
+            case 4:
+                return new InsertionSort();
             default:
                 return new SorterLoaderException("Invalid sorter choice: " + choice);
         }
